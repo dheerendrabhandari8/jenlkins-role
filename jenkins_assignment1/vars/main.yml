@@ -1,0 +1,6 @@
+---
+# vars file for jenkins_assignment1
+  packages:
+        - openjdk-11-jdk
+        
+  state: present

@@ -1,0 +1,27 @@
+---
+# tasks file for jenkins_assignment1
+  - name: installing java
+    apt:
+      name: "{{ packages }}"
+      state: "{{ state }}"
+
+  - name: adding key jenkins key
+    apt_key:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+      state: present
+
+  - name: add a Jenkins apt repository entry
+    apt_repository:
+      repo: deb https://pkg.jenkins.io/debian-stable binary/
+      state: present
+
+
+  - name: installing jenkins
+    apt:
+      name: jenkins
+      state: present
+  - name: start jenkins
+    service:
+      name: jenkins
+      enabled: true
+      state: started
